@@ -1,4 +1,4 @@
-package com.example.testawss3;
+package com.example.testawss3.s3;
 
 import com.amazonaws.HttpMethod;
 import com.amazonaws.services.s3.AmazonS3;
