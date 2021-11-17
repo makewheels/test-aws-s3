@@ -1,12 +1,14 @@
 package com.example.testawss3;
 
 import com.alibaba.fastjson.JSON;
+import com.amazonaws.HttpMethod;
 import com.example.testawss3.s3.S3Config;
 import com.example.testawss3.s3.S3Service;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -72,6 +74,8 @@ class TestAwsS3ApplicationTests {
         System.out.println(s3Service.getUrl(key));
         System.out.println(s3Service.getCdnUrl(key));
         System.out.println(s3Service.getInternalUrl(key));
+        System.out.println(s3Service.generatePresignedUrl(key, Duration.ofHours(1), HttpMethod.GET));
+        System.out.println(s3Service.generatePresignedUrl(key, Duration.ofHours(1), HttpMethod.PUT));
 
         System.out.println(s3Service.doesObjectExist(key));
     }
