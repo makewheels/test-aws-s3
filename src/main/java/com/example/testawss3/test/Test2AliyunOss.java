@@ -1,4 +1,4 @@
-package com.example.testawss3;
+package com.example.testawss3.test;
 
 import com.alibaba.fastjson.JSON;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
@@ -16,7 +16,7 @@ public class Test2AliyunOss {
         BasicAWSCredentials credentials = new BasicAWSCredentials("LTAI5t8WesPNu1dDLaRmSWt8",
                 "a45nM6ra07b203fXoZ7TKf3POJyYEi");
         AwsClientBuilder.EndpointConfiguration configuration = new AwsClientBuilder.EndpointConfiguration(
-                "oss-cn-beijing.aliyuncs.com", "cn-beijing"
+                "oss-cn-beijing.aliyuncs.com", null
         );
         AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
                 .withCredentials(new AWSStaticCredentialsProvider(credentials))

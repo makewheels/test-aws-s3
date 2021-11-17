@@ -4,5 +4,7 @@ import lombok.Data;
 
 @Data
 public class S3Credential {
+    private String bucketName;
+    private String endpoint;
 
 }
