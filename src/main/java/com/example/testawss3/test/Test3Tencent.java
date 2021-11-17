@@ -10,7 +10,7 @@ import com.amazonaws.services.s3.model.PutObjectResult;
 
 import java.util.UUID;
 
-public class Test3Qcloud {
+public class Test3Tencent {
     public static void main(String[] args) {
         BasicAWSCredentials credentials = new BasicAWSCredentials("AKIDrYdYFhurY0DBwRggSzHL9hz3rPhjW4MP",
                 "pOilY5MMyVlkSu50f4C4fgT1JL8fwxjG");

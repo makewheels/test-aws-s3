@@ -42,10 +42,9 @@ public class S3Service {
         this.internalDomain = config.getInternalDomain();
 
         if (amazonS3 == null) {
-            AWSCredentials credentials = new BasicAWSCredentials(config.getAccessKey(), config.getAccessKey());
+            AWSCredentials credentials = new BasicAWSCredentials(config.getAccessKey(), config.getSecretKey());
             AwsClientBuilder.EndpointConfiguration configuration = new AwsClientBuilder.EndpointConfiguration(
-                    config.getEndpoint(), null
-            );
+                    config.getEndpoint(), config.getRegion());
             amazonS3 = AmazonS3ClientBuilder.standard()
                     .withCredentials(new AWSStaticCredentialsProvider(credentials))
                     .withEndpointConfiguration(configuration)
