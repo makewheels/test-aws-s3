@@ -33,12 +33,12 @@ public class RunTests {
 
         S3Config baiduConfig = new S3Config("s3.bj.bcebos.com", "bj",
                 "a579f885d23e496f9b4b5a4a86d8d7f1", "e5549857b8a44311ace833971bf57614",
-                "common-objects",
+                "common-bucket",
                 "common-bucket.bj.bcebos.com",
                 "common-bucket.cdn.bcebos.com",
                 "common-bucket.bj.bcebos.com");
 
-        S3Config huaweiConfig = new S3Config("oss-cn-beijing.aliyuncs.com", "cn-beijing",
+        S3Config huaweiConfig = new S3Config("obs.cn-north-4.myhuaweicloud.com", "cn-north-4",
                 "7BWE8R0DACRORD89D2U5", "OyJbgelzyedw3VA94QNugoAq9NWtFPMUzbecNnmt",
                 "test-beijing-bucket",
                 "test-beijing-bucket.obs.cn-north-4.myhuaweicloud.com",
@@ -61,13 +61,15 @@ public class RunTests {
         System.out.println(JSON.toJSONString(s3Service.listObjects("test/")));
         List<String> keys = new ArrayList<>();
         keys.add(key);
-        s3Service.deleteObject(key);
-//        System.out.println(JSON.toJSONString(s3Service.deleteObjects(keys)));
+//        s3Service.deleteObject(key);
+        System.out.println(JSON.toJSONString(s3Service.deleteObjects(keys)));
 
         System.out.println(s3Service.getUrl(key));
         System.out.println(s3Service.getCdnUrl(key));
         System.out.println(s3Service.getInternalUrl(key));
         System.out.println(s3Service.getPresignedDownloadUrlForOneHour(key));
         System.out.println(s3Service.getPresignedUploadUrlForOneHour(key));
+
+        System.out.println(s3Service.doesObjectExist(key));
     }
 }
