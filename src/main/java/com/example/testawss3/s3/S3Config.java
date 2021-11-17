@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class S3Config {
     private String endpoint;
+    private String internalEndpoint;
+
     private String region;
     private String accessKey;
     private String secretKey;

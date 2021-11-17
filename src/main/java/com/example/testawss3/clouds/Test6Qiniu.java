@@ -1,4 +1,4 @@
-package com.example.testawss3.test;
+package com.example.testawss3.clouds;
 
 import com.alibaba.fastjson.JSON;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
@@ -10,12 +10,12 @@ import com.amazonaws.services.s3.model.PutObjectResult;
 
 import java.util.UUID;
 
-public class Test3Tencent {
+public class Test6Qiniu {
     public static void main(String[] args) {
-        BasicAWSCredentials credentials = new BasicAWSCredentials("AKIDrYdYFhurY0DBwRggSzHL9hz3rPhjW4MP",
-                "pOilY5MMyVlkSu50f4C4fgT1JL8fwxjG");
+        BasicAWSCredentials credentials = new BasicAWSCredentials("Ly7DtQ4VK5LbOsPrRfqx763WQzgZnKjRdi8vRx2s",
+                "Fbq5BN2B7CK62Z6SzyBXA329yy0Mhwa6ZhgtP7u4");
         AwsClientBuilder.EndpointConfiguration configuration = new AwsClientBuilder.EndpointConfiguration(
-                "cos.ap-beijing.myqcloud.com", null
+                "s3-cn-north-1.qiniucs.com", "cn-north-1"
         );
         AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
                 .withCredentials(new AWSStaticCredentialsProvider(credentials))
@@ -23,7 +23,7 @@ public class Test3Tencent {
                 .build();
 
         long time = System.currentTimeMillis();
-        PutObjectResult putObjectResult = s3Client.putObject("bucket-1253319037",
+        PutObjectResult putObjectResult = s3Client.putObject("bucket",
                 "test/" + time + ".txt",
                 UUID.randomUUID() + " " + time);
         System.out.println(JSON.toJSONString(putObjectResult));
