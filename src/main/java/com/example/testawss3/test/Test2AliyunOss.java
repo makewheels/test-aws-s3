@@ -1,6 +1,7 @@
 package com.example.testawss3.test;
 
 import com.alibaba.fastjson.JSON;
+import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.client.builder.AwsClientBuilder;
@@ -13,11 +14,10 @@ import java.util.UUID;
 
 public class Test2AliyunOss {
     public static void main(String[] args) {
-        BasicAWSCredentials credentials = new BasicAWSCredentials("LTAI5t8WesPNu1dDLaRmSWt8",
+        AWSCredentials credentials = new BasicAWSCredentials("LTAI5t8WesPNu1dDLaRmSWt8",
                 "a45nM6ra07b203fXoZ7TKf3POJyYEi");
         AwsClientBuilder.EndpointConfiguration configuration = new AwsClientBuilder.EndpointConfiguration(
-                "oss-cn-beijing.aliyuncs.com", null
-        );
+                "oss-cn-beijing.aliyuncs.com", null);
         AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
                 .withCredentials(new AWSStaticCredentialsProvider(credentials))
                 .withEndpointConfiguration(configuration)

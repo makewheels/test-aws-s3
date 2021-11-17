@@ -1,0 +1,20 @@
+package com.example.testawss3.s3;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class S3Config {
+    private String endpoint;
+    private String accessKey;
+    private String secretKey;
+    private String bucketName;
+
+    private String domain;
+    private String cdnDomain;
+    private String internalDomain;
+
+}
