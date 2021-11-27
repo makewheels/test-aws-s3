@@ -8,12 +8,10 @@ import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.*;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
-import java.net.URL;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -21,7 +19,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class S3Service implements InitializingBean {
+public class S3Service {
     @Value("${oss.useInternal}")
     private boolean useInternal;
 
@@ -72,9 +70,19 @@ public class S3Service implements InitializingBean {
                 .build();
     }
 
-    @Override
-    public void afterPropertiesSet() {
-        init();
+    public void init(S3Config config) {
+        if (amazonS3 != null) {
+            return;
+        }
+        AWSCredentials credentials = new BasicAWSCredentials(config.getAccessKey(), config.getSecretKey());
+        AwsClientBuilder.EndpointConfiguration configuration = new AwsClientBuilder.EndpointConfiguration(
+                config.getEndpoint(), config.getRegion());
+        amazonS3 = AmazonS3ClientBuilder.standard()
+                .withCredentials(new AWSStaticCredentialsProvider(credentials))
+                .withEndpointConfiguration(configuration)
+                .build();
+        bucketName = config.getBucketName();
+        region = config.getRegion();
     }
 
     private AmazonS3 getClient() {
